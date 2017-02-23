@@ -26,5 +26,5 @@ class Leaf():
     def _convertEncodedResultToLeaf(self, encodedResult):
         result = BinaryConverter().toAsciiString(encodedResult)
         if (len(result) > 7):
-            raise Exception('The encoded result is bigger than the allowed leaf name')
+            raise Exception('The encoded result is bigger than the allowed leaf name:', len(result))
         return result
