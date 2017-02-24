@@ -16,7 +16,7 @@ class Number(ValueType, metaclass=ABCMeta):
         Validator.minValue(value, self.getMinValue())
         Validator.maxValue(value, self.getMaxValue())
 
-        return self.binaryConverter.fromUNumber(value, self.getSize())
+        return self.binaryConverter.from_u_number_to_bit_array(value, self.getSize())
 
     def decode(self, value) -> (int, int):
         pass

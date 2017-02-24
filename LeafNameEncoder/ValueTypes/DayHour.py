@@ -15,10 +15,10 @@ class DayHour(ValueType):
         dayOfWeek = value[0]
         hour = value[1]
         product = (dayOfWeek * 24) + hour
-        return self.binaryConverter.fromUNumber(product, self.getSize())
+        return self.binaryConverter.from_u_number_to_bit_array(product, self.getSize())
 
     def decode(self, value) -> (int, int):
-        decodedvalue = self.binaryConverter.toUNumber(value)
+        decodedvalue = self.binaryConverter.from_bit_array_to_u_number(value)
         return self._decodeDay(decodedvalue), self._decodeHour(decodedvalue)
 
     def getSize(self):

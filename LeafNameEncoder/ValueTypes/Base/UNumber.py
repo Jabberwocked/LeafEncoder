@@ -7,4 +7,4 @@ class UNumber(Number, metaclass=ABCMeta):
         return 0
 
     def decode(self, value):
-        return self.binaryConverter.toUNumber(value)
+        return self.binaryConverter.from_bit_array_to_u_number(value)

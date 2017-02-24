@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 import unittest
 
+from bitarray import bitarray
+
 from LeafNameEncoder.ValueTypes.UShort import UShort
 
 class UShortTest(unittest.TestCase):
 
     def test_encode(self):
         # arrange
-        expected = '0011101110000100'
+        expected = bitarray('0011101110000100')
         sut = UShort()
         # act
         actual = sut.encode(15236)
@@ -19,7 +21,7 @@ class UShortTest(unittest.TestCase):
         expected = 15236
         sut = UShort()
         # act
-        actual = sut.decode('0011101110000100')
+        actual = sut.decode(bitarray('0011101110000100'))
         # assert
         self.assertEqual(expected, actual)
     

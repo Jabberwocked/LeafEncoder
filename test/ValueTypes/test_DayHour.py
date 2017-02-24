@@ -2,13 +2,15 @@
 import sys
 import unittest
 
+from bitarray import bitarray
+
 from LeafNameEncoder.ValueTypes.DayHour import DayHour
 
 class DayHourTest(unittest.TestCase):
 
     def test_encodeFirstHourOfWeek(self):
         # arrange
-        expected = '00000000'
+        expected = bitarray('00000000')
         dayHour = DayHour()
         # act
         actual = dayHour.encode((0, 0))
@@ -20,13 +22,13 @@ class DayHourTest(unittest.TestCase):
         expected = 0, 0
         dayHour = DayHour()
         # act
-        actual = dayHour.decode('00000000')
+        actual = dayHour.decode(bitarray('00000000'))
         # assert
         self.assertEqual(expected, actual)
 
     def test_encodeLastHourOfWeek(self):
         # arrange
-        expected = '10100111'
+        expected = bitarray('10100111')
         dayHour = DayHour()
         # act
         actual = dayHour.encode((6, 23))
@@ -38,12 +40,12 @@ class DayHourTest(unittest.TestCase):
         expected = 6, 23
         dayHour = DayHour()
         # act
-        actual = dayHour.decode('10100111')
+        actual = dayHour.decode(bitarray('10100111'))
         # assert
         self.assertEqual(expected, actual)
 
     def test_encodeFirstHourOfSecondDay(self):
-        expected = '00011000'
+        expected = bitarray('00011000')
         dayHour = DayHour()
         # act
         actual = dayHour.encode((1, 0))
@@ -54,7 +56,7 @@ class DayHourTest(unittest.TestCase):
         expected = 1 , 0
         dayHour = DayHour()
         # act
-        actual = dayHour.decode('00011000')
+        actual = dayHour.decode(bitarray('00011000'))
         # assert
         self.assertEqual(expected, actual)
 

@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 import unittest
 
+from bitarray import bitarray
+
 from LeafNameEncoder.ValueTypes.UTinyInt import UTinyInt
 
 class UTinyTest(unittest.TestCase):
     
     def test_encode(self):
         # arrange
-        expected = '01110011'
+        expected = bitarray('01110011')
         sut = UTinyInt()
         # act
         actual = sut.encode(115)
@@ -20,7 +22,7 @@ class UTinyTest(unittest.TestCase):
         expected = 115
         sut = UTinyInt()
         # act
-        actual = sut.decode('01110011')
+        actual = sut.decode(bitarray('01110011'))
         # assert
         self.assertEqual(expected, actual)
     
