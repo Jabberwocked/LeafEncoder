@@ -18,8 +18,11 @@ class DayHour(ValueType):
         return self.binaryConverter.from_u_number_to_bit_array(product, self.getSize())
 
     def decode(self, value) -> (int, int):
-        decodedvalue = self.binaryConverter.from_bit_array_to_u_number(value)
-        return self._decodeDay(decodedvalue), self._decodeHour(decodedvalue)
+        if (not value):
+            return (0, 0)
+
+        result = self.binaryConverter.from_bit_array_to_u_number(value)
+        return self._decodeDay(result), self._decodeHour(result)
 
     def getSize(self):
         return 8
