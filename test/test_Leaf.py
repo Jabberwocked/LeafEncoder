@@ -28,6 +28,18 @@ class LeafTest(unittest.TestCase):
         # assert
         self.assertEqual(expected, actual)
 
+    def test_encode_decode_four_day_hours(self):
+        # arrange
+        sut = Leaf()
+        expected = [(ValueType.DayHour, (1, 10)),
+                    (ValueType.DayHour, (2, 11)),
+                    (ValueType.DayHour, (3, 14)),
+                    (ValueType.DayHour, (5, 15))]
+        encodedValues = sut.create(expected)
+        # act
+        actual = sut.decode(encodedValues)
+        # assert
+        self.assertEqual(expected, actual)
 
     def test_encodeBucketZeroDayZeroHourZero(self):
         # arrange
